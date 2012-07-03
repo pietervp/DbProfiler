@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{453B90D7-FCEC-4275-9EA7-C7218A14CAFE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DbProfiler</RootNamespace>
+    <AssemblyName>DbProfiler</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\Measure.cs" />
+    <Compile Include="IProfiler.cs" />
+    <Compile Include="IProfilingService.cs" />
+    <Compile Include="Output\DebugProfileOutput.cs" />
+    <Compile Include="GenericProfiler.cs" />
+    <Compile Include="Base\EfQueryEventArgs.cs" />
+    <Compile Include="Output\IProfileOutput.cs" />
+    <Compile Include="Base\ProfilerStopwatchAction.cs" />
+    <Compile Include="Base\ProfilingOptions.cs" />
+    <Compile Include="Output\ProfilingOutput.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxy\ProxyDbCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Proxy\ProxyDbCommandDefinition.cs" />
+    <Compile Include="Proxy\ProxyDbConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Proxy\ProxyDbDataAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Proxy\ProxyDbProviderFactory.cs" />
+    <Compile Include="Proxy\ProxyDbProviderServices.cs" />
+    <Compile Include="ProxyGenerator.cs" />
+    <Compile Include="Output\WcfProfileOutput.cs" />
+    <Compile Include="Proxy\QueryStatisticsGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DbProfiler.Common\DbProfiler.Common.csproj">
+      <Project>{BFE24ADD-E3B6-447A-8035-2DAF484DCA7D}</Project>
+      <Name>DbProfiler.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
